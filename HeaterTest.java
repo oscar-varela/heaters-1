@@ -62,7 +62,52 @@ public class HeaterTest
         heater1.cooler();
         assertEquals(10, heater1.getTemperature(), 0.1);
     }
+
+    @Test
+    public void testMaxValue()
+    {
+        Heater heater1 = new Heater(5, 25);
+        assertEquals(15, heater1.getTemperature(), 0.1);
+        heater1.warmer();
+        assertEquals(20, heater1.getTemperature(), 0.1);
+        heater1.warmer();
+        assertEquals(25, heater1.getTemperature(), 0.1);
+        heater1.warmer();
+        assertEquals(25, heater1.getTemperature(), 0.1);
+    }
+
+    @Test
+    public void testMinValue()
+    {
+        Heater heater1 = new Heater(5, 25);
+        heater1.cooler();
+        heater1.cooler();
+        assertEquals(5, heater1.getTemperature(), 0.1);
+        heater1.cooler();
+        assertEquals(5, heater1.getTemperature(), 0.1);
+    }
+    
+    @Test
+    public void testChangeIncrement()
+    {
+        Heater heater = new Heater();//temperature = 15 ,increment = 5
+        heater.setIncrement(3);// increment = 3
+        heater.warmer();// temperature = 18
+        assertEquals(18, heater.getTemperature(),0.1);
+    }
+    
+    @Test
+    public void testMaxValueWhitIncrement()
+    {Heater heater =new Heater(10 ,20);
+       heater.setIncrement(2);// increment= 5
+       heater.cooler();// 13
+       heater.cooler();// 11
+       heater.cooler();// 11
+       assertEquals(11,heater.getTemperature(),0.1);
+    }
 }
+
+
 
 
 

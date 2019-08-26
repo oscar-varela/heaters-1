@@ -8,11 +8,16 @@ public class Heater
   {
       temperature = 15.0;
       increment = 5.0;
+      min = 0;
+      max = 30;
   }
   
-  public Heater(double minValue,double maxVaule)
+  public Heater(double minValue,double maxValue)
   {  
       temperature = 15.0;
+      increment = 5.0;
+      min = minValue;
+      max = maxValue;
   }
   public double getTemperature()
   {
@@ -20,10 +25,19 @@ public class Heater
   }
   public void warmer()
   {
-    temperature += increment;
+    if (temperature < max)
+     {
+       temperature += increment;
+     }
   }
   public void cooler()
-  {
+  {  if (temperature > min)
+    {
       temperature -= increment;
+    }
+  }
+  public void setIncrement(double newIncrement)
+  {
+    increment = newIncrement; 
   }
 }
